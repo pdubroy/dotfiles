@@ -1,0 +1,7 @@
+! For OS X with an Apple keyboard (tested with XQuartz).
+! By default, Meta_L and Meta_R are the Cmd keys. This sucks for Emacs.
+! Here we remap the left option key to Meta_L, and leave the right option
+! key as Alt_R.
+clear mod1
+keycode 66 = Meta_L
+add mod1 = Meta_L
