@@ -16,6 +16,8 @@ elif [[ $PLATFORM == 'Linux' ]]; then
     alias ls='ls --color'
 fi
 
+alias emacs='emacs -nw'
+
 # Every time this file is sourced, check the status of the dotfiles repo,
 # and remind me if there are uncommited changes.
 DOTFILES_STATUS=`GIT_DIR=~/dotfiles/.git GIT_WORK_TREE=~/dotfiles git status --porcelain`
@@ -36,5 +38,5 @@ alias n="ninja -C out/Debug"
 export PATH="$PATH:~/dev/depot_tools:"
 
 # From http://code.google.com/p/chromium/wiki/LinuxFasterBuilds
-export GYP_DEFINES="remove_webcore_debug_symbols=1 disable_nacl=1 enable_svg=0"
+export GYP_DEFINES="remove_webcore_debug_symbols=1 disable_nacl=1 enable_svg=0 component=shared_library"
 export GYP_GENERATORS="make,ninja"
