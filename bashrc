@@ -32,6 +32,11 @@ if [[ $PLATFORM == 'Linux' ]]; then
     export CXX='ccache g++'
 fi
 
+if which klist &> /dev/null && ! klist -s; then
+    echo "Getting a Kerberos ticket..."
+    kinit
+fi
+
 # Some Chromium-specific stuff.
 
 alias n="ninja -C out/Debug"
