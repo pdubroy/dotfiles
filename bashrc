@@ -25,6 +25,7 @@ if [ -n "$DOTFILES_STATUS" ]; then
     echo "WARNING: Uncommitted changes in ~/dotfiles:"
     echo $DOTFILES_STATUS
 else
+    echo "Updating dotfiles..."
     GIT_DIR=~/dotfiles/.git GIT_WORK_TREE=~/dotfiles git pull
 fi
 
