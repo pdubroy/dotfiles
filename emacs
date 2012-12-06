@@ -20,3 +20,11 @@
               c-basic-offset 2)
 
 (server-start)
+
+(add-to-list 'load-path "~/dotfiles/")
+
+(defun my-c-mode-hook ()
+  (load "google-c-style.el")
+  (google-set-c-style)
+  (local-set-key  (kbd "C-c o") 'ff-find-other-file))
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
