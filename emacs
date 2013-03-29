@@ -17,9 +17,8 @@
 
 (setq-default indent-tabs-mode nil
               tab-width 2
-              c-basic-offset 2)
-
-(server-start)
+              c-basic-offset 2
+              js-indent-level 2)
 
 (add-to-list 'load-path "~/dotfiles/")
 
@@ -28,3 +27,4 @@
   (google-set-c-style)
   (local-set-key  (kbd "C-c o") 'ff-find-other-file))
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
+
