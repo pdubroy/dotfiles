@@ -41,6 +41,7 @@ fi
 alias n="ninja -C out/Debug"
 
 export PATH="$PATH:~/dev/depot_tools:~/dev/chromium/src/third_party/llvm-build/Release+Asserts/bin/"
+export CHROME_DEVEL_SANDBOX=/usr/local/sbin/chrome-devel-sandbox
 
 # From http://code.google.com/p/chromium/wiki/LinuxFasterBuilds
 export GYP_DEFINES="remove_webcore_debug_symbols=1 disable_nacl=1 enable_svg=0 component=shared_library clang=1"
