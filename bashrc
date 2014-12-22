@@ -1,7 +1,9 @@
 #!/bin/bash
 
+# .bashrc contains configuration for interactive shells
+
 export PS1="\w\$ "
-export PATH="$PATH:~/bin"
+export PATH="~/bin:$PATH"
 export EDITOR='emacs -nw'
 
 PLATFORM=$(uname)
@@ -24,3 +26,18 @@ else
     echo "Updating dotfiles..."
     GIT_DIR=~/dotfiles/.git GIT_WORK_TREE=~/dotfiles git pull
 fi
+
+# Dynamically add the `npm bin` directory to $PATH.
+ORIG_PATH=$PATH
+function setPathToNpmBin() {
+  export PATH=$ORIG_PATH
+  SEARCH_DIR=$(pwd)
+  # Search for the bin directory. Like `npm bin`, but faster.
+  while true; do
+    NPM_BIN="$SEARCH_DIR/node_modules/.bin"
+    [[ -d "$NPM_BIN" ]] && export PATH="$NPM_BIN:$ORIG_PATH" && break
+    [[ "$SEARCH_DIR" == "/" ]] && break
+    SEARCH_DIR="$(dirname $SEARCH_DIR)"
+  done
+}
+PROMPT_COMMAND=setPathToNpmBin
