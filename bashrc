@@ -37,7 +37,7 @@ function setPathToNpmBin() {
     NPM_BIN="$SEARCH_DIR/node_modules/.bin"
     [[ -d "$NPM_BIN" ]] && export PATH="$NPM_BIN:$ORIG_PATH" && break
     [[ "$SEARCH_DIR" == "/" ]] && break
-    SEARCH_DIR="$(dirname $SEARCH_DIR)"
+    SEARCH_DIR="$(dirname "$SEARCH_DIR")"
   done
 }
 PROMPT_COMMAND=setPathToNpmBin
