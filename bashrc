@@ -1,6 +1,4 @@
-#!/bin/bash
-
-# .bashrc contains configuration for interactive shells
+# .bashrc contains configuration for interactive, non-login shells.
 
 export PS1="\w\$ "
 export PATH="~/bin:$PATH"
@@ -15,17 +13,6 @@ elif [[ $PLATFORM == 'Linux' ]]; then
 fi
 
 alias emacs='emacs -nw'
-
-# Every time this file is sourced, check the status of the dotfiles repo,
-# and remind me if there are uncommited changes.
-DOTFILES_STATUS=`GIT_DIR=~/dotfiles/.git GIT_WORK_TREE=~/dotfiles git status --porcelain`
-if [ -n "$DOTFILES_STATUS" ]; then
-    echo "WARNING: Uncommitted changes in ~/dotfiles:"
-    echo $DOTFILES_STATUS
-else
-    echo "Updating dotfiles..."
-    GIT_DIR=~/dotfiles/.git GIT_WORK_TREE=~/dotfiles git pull
-fi
 
 # Dynamically add the `npm bin` directory to $PATH.
 ORIG_PATH=$PATH
