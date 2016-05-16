@@ -14,7 +14,15 @@ fi
 
 alias emacs='emacs -nw'
 
+export NVM_DIR="/Users/dubroy/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+VIRTUALENV=~/.venv/base/bin/activate
+[ -s "$VIRTUALENV" ] && source "$VIRTUALENV"  # Activate virtualenv.
+
 # Dynamically add the `npm bin` directory to $PATH.
+# TODO: This has the problem that any modifications to PATH after this file is
+# sourced will be lost every time this function is re-executed.
 ORIG_PATH=$PATH
 function setPathToNpmBin() {
   export PATH=$ORIG_PATH
@@ -28,9 +36,3 @@ function setPathToNpmBin() {
   done
 }
 PROMPT_COMMAND=setPathToNpmBin
-
-export NVM_DIR="/Users/dubroy/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-VIRTUALENV=~/.venv/base/bin/activate
-[ -s "$VIRTUALENV" ] && source "$VIRTUALENV"  # Activate virtualenv.
