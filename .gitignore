@@ -1,0 +1,3 @@
+emacs.d/auto-save-list/*
+emacs.d/**/*.elc
+emacs.d/elpa/archives/*
