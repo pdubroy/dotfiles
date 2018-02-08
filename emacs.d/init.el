@@ -13,8 +13,6 @@
               c-basic-offset 2
               js-indent-level 2)
 
-(set-face-foreground 'minibuffer-prompt "cyan")
-
 ;; Newline at end of file
 (setq require-final-newline t)
 
@@ -65,7 +63,7 @@
  '(custom-safe-themes
    (quote
     ("c74e83f8aa4c78a121b52146eadb792c9facc5b1f02c917e3dbb454fca931223" "a27c00821ccfd5a78b01e4f35dc056706dd9ede09a8b90c6955ae6a390eb1c1e" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" default)))
- '(package-selected-packages (quote (typescript-mode use-package))))
+ '(package-selected-packages (quote (base16-theme typescript-mode use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -80,8 +78,12 @@
 (use-package typescript-mode
   :ensure t)
 
-(setq column-number-mode t)
+(use-package base16-theme
+  :ensure t
+  :config
+  (load-theme 'base16-default-dark t))
 
+(setq column-number-mode t)
 
 (defun simple-mode-line-render (left right)
   (let* ((available-width (- (window-width) (length left) 2)))
