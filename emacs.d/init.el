@@ -19,11 +19,12 @@
 ;; delete the selection with a keypress
 (delete-selection-mode t)
 
-;; store all backup and autosave files in the tmp dir
+;; store all backup and autosave files in the emacs.d directory
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+      `(("." . ,(concat user-emacs-directory "backups"))))
+
+;; don't create interlock files (e.g. '.#filename.cc')
+(setq create-lockfiles nil)
 
 ;; autosave the undo-tree history
 (setq undo-tree-history-directory-alist
@@ -85,7 +86,9 @@
   (require 'use-package))
 
 (use-package typescript-mode
-  :ensure t)
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode)))
 
 (use-package base16-theme
   :ensure t
@@ -97,10 +100,10 @@
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) ")
   (setq enable-recursive-minibuffers t)
-  ;;(global-set-key "\C-s" 'swiper)
-  (global-set-key (kbd "C-c C-r") 'ivy-resume)
-  (global-set-key (kbd "<f6>") 'ivy-resume))
+  (global-set-key "\C-s" 'swiper)
+  (global-set-key (kbd "C-c C-r") 'ivy-resume))
 
 (use-package counsel
   :ensure t
@@ -116,13 +119,17 @@
   (global-set-key (kbd "C-c j") 'counsel-git-grep)
   (global-set-key (kbd "C-c k") 'counsel-ag)
   (global-set-key (kbd "C-x l") 'counsel-locate)
-  (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
 
 (use-package magit
   :ensure t
   :config
   (global-set-key (kbd "C-x g") 'magit-status))
+
+(use-package protobuf-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode)))
 
 (setq column-number-mode t)
 
