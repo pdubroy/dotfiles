@@ -22,6 +22,8 @@
 ;; store all backup and autosave files in the emacs.d directory
 (setq backup-directory-alist
       `(("." . ,(concat user-emacs-directory "backups"))))
+(setq auto-save-file-name-transforms
+      `((".*" ,(concat user-emacs-directory "autosaves") t)))
 
 ;; don't create interlock files (e.g. '.#filename.cc')
 (setq create-lockfiles nil)
@@ -101,6 +103,7 @@
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
+  (setq ivy-on-del-error-function nil)
   (setq enable-recursive-minibuffers t)
   (global-set-key "\C-s" 'swiper)
   (global-set-key (kbd "C-c C-r") 'ivy-resume))
