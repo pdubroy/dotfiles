@@ -134,6 +134,8 @@
   :config
   (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode)))
 
+(use-package bazel-mode)
+
 (setq column-number-mode t)
 
 (defun simple-mode-line-render (left right)
