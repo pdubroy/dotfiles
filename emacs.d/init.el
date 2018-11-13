@@ -127,11 +127,6 @@
   (global-set-key (kbd "M-y") 'counsel-yank-pop)
   (define-key minibuffer-local-map (kbd "C-r") 'counsel-minibuffer-history))
 
-(use-package magit
-  :ensure t
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
-
 (use-package protobuf-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode)))
