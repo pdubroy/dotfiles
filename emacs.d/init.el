@@ -8,6 +8,8 @@
 
 (menu-bar-mode -1)
 
+(server-start)
+
 (setq-default indent-tabs-mode nil
               tab-width 4
               c-basic-offset 4
